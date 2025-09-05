@@ -8,19 +8,20 @@ const Footer = () => {
 
   return (
     <div>
-      <footer className="bg-gray-900 text-white">
-        {/* Join as Driver CTA */}
-        <div className="bg-yellow-400 py-6">
-          <div className="container mx-auto px-4 text-center">
-            <h3 className="text-2xl font-bold text-gray-900 mb-2">Want to Drive with Us?</h3>
-            <p className="text-gray-800 mb-4">Join our network of professional drivers and start earning today</p>
-            <Link to="/driver-registration">
-              <Button className="bg-gray-900 hover:bg-gray-800 text-yellow-400 font-semibold px-8 py-3 rounded-full text-lg shadow-lg">
-                Join as a Driver
-              </Button>
-            </Link>
-          </div>
+      {/* Join as Driver CTA */}
+      <div className="bg-yellow-400 py-8">
+        <div className="container mx-auto px-4 text-center">
+          <h3 className="text-2xl font-bold text-purple-900 mb-2">Want to Drive with Us?</h3>
+          <p className="text-purple-800 mb-6 text-lg">Join our network of professional drivers and start earning today</p>
+          <Link to="/driver-registration">
+            <Button className="bg-purple-600 hover:bg-purple-700 text-white font-semibold px-8 py-4 rounded-full text-lg shadow-lg">
+              Join as a Driver
+            </Button>
+          </Link>
         </div>
+      </div>
+
+      <footer className="bg-gray-900 text-white">
 
       <div className="container mx-auto px-4 py-16">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">

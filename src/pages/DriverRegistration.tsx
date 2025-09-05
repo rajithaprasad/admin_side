@@ -1,16 +1,14 @@
 import React, { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Progress } from "@/components/ui/progress";
-import { Upload, X, CheckCircle, ArrowLeft, ArrowRight, Truck, FileText, Shield, User } from "lucide-react";
+import { Card, CardContent } from "@/components/ui/card";
+import { Upload, X, CheckCircle, Truck, FileText, Shield, User, Star, Clock, Package } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
+import { useNavigate } from "react-router-dom";
 
 export default function DriverRegistration() {
-  const [currentStep, setCurrentStep] = useState(1);
   const [formData, setFormData] = useState({
     firstName: '',
     lastName: '',
@@ -41,27 +39,12 @@ export default function DriverRegistration() {
   const { toast } = useToast();
   const navigate = useNavigate();
 
-  const totalSteps = 4;
-  const progress = (currentStep / totalSteps) * 100;
-
   const handleInputChange = (field: string, value: string) => {
     setFormData(prev => ({ ...prev, [field]: value }));
   };
 
   const handleFileUpload = (field: string, file: File | null) => {
     setFiles(prev => ({ ...prev, [field]: file }));
-  };
-
-  const nextStep = () => {
-    if (currentStep < totalSteps) {
-      setCurrentStep(currentStep + 1);
-    }
-  };
-
-  const prevStep = () => {
-    if (currentStep > 1) {
-      setCurrentStep(currentStep - 1);
-    }
   };
 
   const handleSubmit = (e: React.FormEvent) => {
@@ -110,25 +93,46 @@ export default function DriverRegistration() {
         </Label>
         <div className="border-2 border-dashed border-gray-300 rounded-xl p-6 hover:border-purple-400 transition-colors bg-gray-50/50">
           {file ? (
-            <div className="flex items-center justify-between">
-              <div className="flex items-center space-x-3">
-                <div className="w-10 h-10 bg-green-100 rounded-full flex items-center justify-center">
-                  <CheckCircle className="w-5 h-5 text-green-600" />
+            <div className="space-y-4">
+              <div className="flex items-center justify-between">
+                <div className="flex items-center space-x-3">
+                  <div className="w-10 h-10 bg-green-100 rounded-full flex items-center justify-center">
+                    <CheckCircle className="w-5 h-5 text-green-600" />
+                  </div>
+                  <div>
+                    <span className="text-sm font-medium text-gray-900">{file.name}</span>
+                    <p className="text-xs text-gray-500">{(file.size / 1024 / 1024).toFixed(2)} MB</p>
+                  </div>
                 </div>
-                <div>
-                  <span className="text-sm font-medium text-gray-900">{file.name}</span>
-                  <p className="text-xs text-gray-500">{(file.size / 1024 / 1024).toFixed(2)} MB</p>
-                </div>
+                <Button
+                  type="button"
+                  variant="ghost"
+                  size="sm"
+                  onClick={() => handleFileUpload(field, null)}
+                  className="text-gray-500 hover:text-red-500"
+                >
+                  <X className="w-4 h-4" />
+                </Button>
               </div>
-              <Button
-                type="button"
-                variant="ghost"
-                size="sm"
-                onClick={() => handleFileUpload(field, null)}
-                className="text-gray-500 hover:text-red-500"
-              >
-                <X className="w-4 h-4" />
-              </Button>
+              
+              {/* Preview uploaded file */}
+              <div className="mt-4">
+                {file.type.startsWith('image/') ? (
+                  <img 
+                    src={URL.createObjectURL(file)} 
+                    alt="Preview" 
+                    className="max-w-full h-48 object-contain rounded-lg border border-gray-200"
+                  />
+                ) : (
+                  <div className="bg-gray-100 rounded-lg p-4 flex items-center justify-center h-48">
+                    <div className="text-center">
+                      <FileText className="w-12 h-12 text-gray-400 mx-auto mb-2" />
+                      <p className="text-sm text-gray-600">PDF Document</p>
+                      <p className="text-xs text-gray-500">{file.name}</p>
+                    </div>
+                  </div>
+                )}
+              </div>
             </div>
           ) : (
             <label className="cursor-pointer flex flex-col items-center space-y-3">
@@ -157,84 +161,110 @@ export default function DriverRegistration() {
     );
   };
 
-  const stepIcons = [
-    { icon: User, title: "Personal Info" },
-    { icon: Truck, title: "Vehicle Details" },
-    { icon: FileText, title: "Documents" },
-    { icon: Shield, title: "Insurance" }
+  const benefits = [
+    {
+      icon: <Package className="w-8 h-8 text-purple-600" />,
+      title: "Competitive Earnings",
+      description: "Earn up to £200+ per day with flexible working hours"
+    },
+    {
+      icon: <Shield className="w-8 h-8 text-purple-600" />,
+      title: "Full Support",
+      description: "24/7 support team and comprehensive training provided"
+    },
+    {
+      icon: <Clock className="w-8 h-8 text-purple-600" />,
+      title: "Flexible Schedule",
+      description: "Work when you want, choose your own hours"
+    },
+    {
+      icon: <Star className="w-8 h-8 text-purple-600" />,
+      title: "Professional Network",
+      description: "Join a trusted network of professional drivers"
+    }
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-purple-50 via-white to-yellow-50">
-      {/* Header */}
-      <div className="bg-white shadow-sm border-b">
-        <div className="container mx-auto px-4 py-4">
-          <div className="flex items-center justify-between">
-            <Link to="/" className="flex items-center space-x-2 text-purple-600 hover:text-purple-700 transition-colors">
-              <ArrowLeft className="w-5 h-5" />
-              <span className="font-medium">Back to Home</span>
-            </Link>
-            <div className="text-center">
-              <h1 className="text-2xl font-bold text-gray-900">Driver Registration</h1>
-              <p className="text-sm text-gray-600">Join our professional driver network</p>
+    <div className="min-h-screen bg-gray-50">
+      {/* Hero Section */}
+      <section className="py-24 bg-gradient-to-br from-purple-600 via-purple-700 to-purple-800 text-white">
+        <div className="container mx-auto px-4 text-center">
+          <h1 className="text-4xl md:text-5xl font-bold mb-6">
+            Join Our Professional Driver Network
+          </h1>
+          <p className="text-xl max-w-3xl mx-auto mb-8 opacity-90">
+            Become part of the MoveXpress family and start earning with flexible hours, competitive rates, and full support.
+          </p>
+          <div className="flex justify-center items-center space-x-8 mb-8">
+            <div className="flex items-center space-x-2">
+              <Star className="w-5 h-5 fill-yellow-400 text-yellow-400" />
+              <span>4.9/5 Driver Rating</span>
             </div>
-            <div className="w-24"></div> {/* Spacer for centering */}
+            <div className="flex items-center space-x-2">
+              <CheckCircle className="w-5 h-5 text-green-400" />
+              <span>Licensed & Insured</span>
+            </div>
+            <div className="flex items-center space-x-2">
+              <Truck className="w-5 h-5" />
+              <span>500+ Active Drivers</span>
+            </div>
           </div>
         </div>
-      </div>
+      </section>
 
-      <div className="container mx-auto px-4 py-8">
-        <div className="max-w-4xl mx-auto">
-          {/* Progress Section */}
-          <div className="mb-8">
-            <div className="flex items-center justify-between mb-4">
-              <span className="text-sm font-medium text-gray-600">Step {currentStep} of {totalSteps}</span>
-              <span className="text-sm font-medium text-gray-600">{Math.round(progress)}% Complete</span>
-            </div>
-            <Progress value={progress} className="h-2 mb-6" />
-            
-            {/* Step Indicators */}
-            <div className="flex items-center justify-between">
-              {stepIcons.map((step, index) => {
-                const stepNumber = index + 1;
-                const isActive = stepNumber === currentStep;
-                const isCompleted = stepNumber < currentStep;
-                
-                return (
-                  <div key={index} className="flex flex-col items-center space-y-2">
-                    <div className={`w-12 h-12 rounded-full flex items-center justify-center transition-all ${
-                      isCompleted 
-                        ? 'bg-green-500 text-white' 
-                        : isActive 
-                          ? 'bg-purple-600 text-white' 
-                          : 'bg-gray-200 text-gray-500'
-                    }`}>
-                      {isCompleted ? (
-                        <CheckCircle className="w-6 h-6" />
-                      ) : (
-                        <step.icon className="w-6 h-6" />
-                      )}
-                    </div>
-                    <span className={`text-xs font-medium ${isActive ? 'text-purple-600' : 'text-gray-500'}`}>
-                      {step.title}
-                    </span>
-                  </div>
-                );
-              })}
-            </div>
+      {/* Why Drive With Us */}
+      <section className="py-20 bg-white">
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl font-bold text-gray-900 mb-4">Why Drive with MoveXpress?</h2>
+            <p className="text-xl text-gray-600">Join thousands of drivers earning great money with flexible schedules</p>
+          </div>
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-6xl mx-auto mb-16">
+            {benefits.map((benefit, index) => (
+              <div key={index} className="text-center p-6 bg-gray-50 rounded-2xl hover:shadow-lg transition-all duration-300">
+                <div className="w-16 h-16 bg-white rounded-2xl flex items-center justify-center mx-auto mb-4 shadow-sm">
+                  {benefit.icon}
+                </div>
+                <h3 className="text-lg font-bold text-gray-900 mb-2">{benefit.title}</h3>
+                <p className="text-gray-600 text-sm">{benefit.description}</p>
+              </div>
+            ))}
           </div>
 
-          <form onSubmit={handleSubmit}>
-            {/* Step 1: Personal Information */}
-            {currentStep === 1 && (
+          {/* Driver Image */}
+          <div className="text-center mb-16">
+            <div className="relative inline-block">
+              <img 
+                src="https://images.pexels.com/photos/5025639/pexels-photo-5025639.jpeg?auto=compress&cs=tinysrgb&w=600" 
+                alt="Professional Driver" 
+                className="w-80 h-80 object-cover rounded-2xl shadow-2xl"
+              />
+              <div className="absolute -bottom-6 -right-6 bg-yellow-400 text-purple-900 px-6 py-3 rounded-full font-bold text-lg shadow-lg">
+                Join Our Team!
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Registration Form */}
+      <section className="py-20 bg-gray-50">
+        <div className="container mx-auto px-4">
+          <div className="max-w-4xl mx-auto">
+            <div className="text-center mb-12">
+              <h2 className="text-4xl font-bold text-gray-900 mb-4">Driver Registration</h2>
+              <p className="text-xl text-gray-600">Fill out the form below to join our driver network</p>
+            </div>
+
+            <form onSubmit={handleSubmit} className="space-y-8">
+              {/* Personal Information */}
               <Card className="shadow-lg border-0">
-                <CardHeader className="bg-gradient-to-r from-purple-600 to-purple-700 text-white rounded-t-lg">
-                  <CardTitle className="text-2xl flex items-center space-x-2">
-                    <User className="w-6 h-6" />
+                <CardContent className="p-8">
+                  <h3 className="text-2xl font-bold text-gray-900 mb-6 flex items-center space-x-2">
+                    <User className="w-6 h-6 text-purple-600" />
                     <span>Personal Information</span>
-                  </CardTitle>
-                </CardHeader>
-                <CardContent className="p-8 space-y-6">
+                  </h3>
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div className="space-y-2">
                       <Label htmlFor="firstName" className="text-sm font-medium text-gray-700">First Name *</Label>
@@ -304,7 +334,7 @@ export default function DriverRegistration() {
                       />
                     </div>
                   </div>
-                  <div className="space-y-2">
+                  <div className="space-y-2 mt-6">
                     <Label htmlFor="address" className="text-sm font-medium text-gray-700">Full Address *</Label>
                     <Input
                       id="address"
@@ -317,18 +347,14 @@ export default function DriverRegistration() {
                   </div>
                 </CardContent>
               </Card>
-            )}
 
-            {/* Step 2: Vehicle Information */}
-            {currentStep === 2 && (
+              {/* Vehicle Information */}
               <Card className="shadow-lg border-0">
-                <CardHeader className="bg-gradient-to-r from-purple-600 to-purple-700 text-white rounded-t-lg">
-                  <CardTitle className="text-2xl flex items-center space-x-2">
-                    <Truck className="w-6 h-6" />
+                <CardContent className="p-8">
+                  <h3 className="text-2xl font-bold text-gray-900 mb-6 flex items-center space-x-2">
+                    <Truck className="w-6 h-6 text-purple-600" />
                     <span>Vehicle Information</span>
-                  </CardTitle>
-                </CardHeader>
-                <CardContent className="p-8 space-y-6">
+                  </h3>
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div className="space-y-2">
                       <Label htmlFor="vehicleType" className="text-sm font-medium text-gray-700">Vehicle Type *</Label>
@@ -356,78 +382,34 @@ export default function DriverRegistration() {
                       />
                     </div>
                   </div>
-                  
-                  {/* Vehicle Requirements Info */}
-                  <div className="bg-blue-50 border border-blue-200 rounded-xl p-6">
-                    <h4 className="font-semibold text-blue-900 mb-3">Vehicle Requirements</h4>
-                    <ul className="space-y-2 text-sm text-blue-800">
-                      <li className="flex items-center space-x-2">
-                        <CheckCircle className="w-4 h-4 text-blue-600" />
-                        <span>Vehicle must be less than 10 years old</span>
-                      </li>
-                      <li className="flex items-center space-x-2">
-                        <CheckCircle className="w-4 h-4 text-blue-600" />
-                        <span>Valid MOT certificate required</span>
-                      </li>
-                      <li className="flex items-center space-x-2">
-                        <CheckCircle className="w-4 h-4 text-blue-600" />
-                        <span>Clean and professional appearance</span>
-                      </li>
-                    </ul>
-                  </div>
                 </CardContent>
               </Card>
-            )}
 
-            {/* Step 3: Document Uploads */}
-            {currentStep === 3 && (
+              {/* Document Uploads */}
               <Card className="shadow-lg border-0">
-                <CardHeader className="bg-gradient-to-r from-purple-600 to-purple-700 text-white rounded-t-lg">
-                  <CardTitle className="text-2xl flex items-center space-x-2">
-                    <FileText className="w-6 h-6" />
+                <CardContent className="p-8">
+                  <h3 className="text-2xl font-bold text-gray-900 mb-6 flex items-center space-x-2">
+                    <FileText className="w-6 h-6 text-purple-600" />
                     <span>Required Documents</span>
-                  </CardTitle>
-                </CardHeader>
-                <CardContent className="p-8 space-y-6">
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  </h3>
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
                     <FileUploadField label="Front Of Driving Licence" field="drivingLicenceFront" />
                     <FileUploadField label="Back Of Driving Licence" field="drivingLicenceBack" />
                   </div>
                   <FileUploadField label="Photo Of Your Selfie" field="selfiePhoto" />
-                  
-                  <div className="bg-yellow-50 border border-yellow-200 rounded-xl p-6">
-                    <h4 className="font-semibold text-yellow-900 mb-3">Document Guidelines</h4>
-                    <ul className="space-y-2 text-sm text-yellow-800">
-                      <li className="flex items-center space-x-2">
-                        <CheckCircle className="w-4 h-4 text-yellow-600" />
-                        <span>Ensure all documents are clear and readable</span>
-                      </li>
-                      <li className="flex items-center space-x-2">
-                        <CheckCircle className="w-4 h-4 text-yellow-600" />
-                        <span>Documents must be current and valid</span>
-                      </li>
-                      <li className="flex items-center space-x-2">
-                        <CheckCircle className="w-4 h-4 text-yellow-600" />
-                        <span>Selfie should clearly show your face</span>
-                      </li>
-                    </ul>
-                  </div>
                 </CardContent>
               </Card>
-            )}
 
-            {/* Step 4: Insurance Documents */}
-            {currentStep === 4 && (
+              {/* Insurance Documents */}
               <Card className="shadow-lg border-0">
-                <CardHeader className="bg-gradient-to-r from-purple-600 to-purple-700 text-white rounded-t-lg">
-                  <CardTitle className="text-2xl flex items-center space-x-2">
-                    <Shield className="w-6 h-6" />
+                <CardContent className="p-8">
+                  <h3 className="text-2xl font-bold text-gray-900 mb-6 flex items-center space-x-2">
+                    <Shield className="w-6 h-6 text-purple-600" />
                     <span>Insurance Documents</span>
-                  </CardTitle>
-                </CardHeader>
-                <CardContent className="p-8 space-y-8">
+                  </h3>
+                  
                   {/* Van Insurance */}
-                  <div className="space-y-4">
+                  <div className="space-y-6 mb-8">
                     <h4 className="text-lg font-semibold text-gray-900">Van Insurance</h4>
                     <FileUploadField label="Van Insurance Copy" field="vanInsurance" />
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -457,7 +439,7 @@ export default function DriverRegistration() {
                   </div>
 
                   {/* Goods In Transit Insurance */}
-                  <div className="space-y-4">
+                  <div className="space-y-6 mb-8">
                     <h4 className="text-lg font-semibold text-gray-900">Goods In Transit Insurance</h4>
                     <FileUploadField label="Goods In Transit Insurance Copy" field="goodsInsurance" />
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -487,7 +469,7 @@ export default function DriverRegistration() {
                   </div>
 
                   {/* Public Liability Insurance */}
-                  <div className="space-y-4">
+                  <div className="space-y-6">
                     <h4 className="text-lg font-semibold text-gray-900">Public Liability Insurance</h4>
                     <FileUploadField label="Public Liability Insurance Copy" field="liabilityInsurance" />
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -517,71 +499,76 @@ export default function DriverRegistration() {
                   </div>
                 </CardContent>
               </Card>
-            )}
 
-            {/* Navigation Buttons */}
-            <div className="flex justify-between items-center mt-8">
-              <Button
-                type="button"
-                variant="outline"
-                onClick={prevStep}
-                disabled={currentStep === 1}
-                className="flex items-center space-x-2 px-6 py-3 rounded-xl"
-              >
-                <ArrowLeft className="w-4 h-4" />
-                <span>Previous</span>
-              </Button>
-
-              {currentStep < totalSteps ? (
-                <Button
-                  type="button"
-                  onClick={nextStep}
-                  className="flex items-center space-x-2 bg-purple-600 hover:bg-purple-700 text-white px-8 py-3 rounded-xl font-semibold"
-                >
-                  <span>Continue</span>
-                  <ArrowRight className="w-4 h-4" />
-                </Button>
-              ) : (
+              {/* Submit Button */}
+              <div className="text-center">
                 <Button
                   type="submit"
-                  className="flex items-center space-x-2 bg-green-600 hover:bg-green-700 text-white px-8 py-3 rounded-xl font-semibold"
+                  className="bg-purple-600 hover:bg-purple-700 text-white px-12 py-4 rounded-full text-lg font-semibold shadow-lg"
                 >
-                  <CheckCircle className="w-4 h-4" />
-                  <span>Submit Application</span>
+                  Submit Application
                 </Button>
-              )}
-            </div>
-          </form>
+                <p className="text-sm text-gray-600 mt-4">
+                  We'll review your application and get back to you within 24 hours
+                </p>
+              </div>
+            </form>
+          </div>
+        </div>
+      </section>
 
-          {/* Benefits Section */}
-          <div className="mt-12 bg-white rounded-2xl shadow-lg p-8">
-            <h3 className="text-2xl font-bold text-gray-900 text-center mb-8">Why Drive with MoveXpress?</h3>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              <div className="text-center p-6">
-                <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <span className="text-2xl font-bold text-green-600">£</span>
-                </div>
-                <h4 className="font-semibold text-gray-900 mb-2">Competitive Earnings</h4>
-                <p className="text-gray-600 text-sm">Earn up to £200+ per day with flexible working hours</p>
+      {/* Requirements Section */}
+      <section className="py-20 bg-white">
+        <div className="container mx-auto px-4">
+          <div className="max-w-4xl mx-auto">
+            <h2 className="text-3xl font-bold text-gray-900 text-center mb-12">Requirements</h2>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+              <div className="bg-gray-50 rounded-2xl p-8">
+                <h3 className="text-xl font-bold text-gray-900 mb-4">Driver Requirements</h3>
+                <ul className="space-y-3">
+                  <li className="flex items-center space-x-3">
+                    <CheckCircle className="w-5 h-5 text-green-500 flex-shrink-0" />
+                    <span className="text-gray-700">Valid UK driving licence</span>
+                  </li>
+                  <li className="flex items-center space-x-3">
+                    <CheckCircle className="w-5 h-5 text-green-500 flex-shrink-0" />
+                    <span className="text-gray-700">Minimum 2 years driving experience</span>
+                  </li>
+                  <li className="flex items-center space-x-3">
+                    <CheckCircle className="w-5 h-5 text-green-500 flex-shrink-0" />
+                    <span className="text-gray-700">Clean driving record</span>
+                  </li>
+                  <li className="flex items-center space-x-3">
+                    <CheckCircle className="w-5 h-5 text-green-500 flex-shrink-0" />
+                    <span className="text-gray-700">Professional attitude</span>
+                  </li>
+                </ul>
               </div>
-              <div className="text-center p-6">
-                <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <Shield className="w-8 h-8 text-blue-600" />
-                </div>
-                <h4 className="font-semibold text-gray-900 mb-2">Full Support</h4>
-                <p className="text-gray-600 text-sm">24/7 support team and comprehensive training provided</p>
-              </div>
-              <div className="text-center p-6">
-                <div className="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <Truck className="w-8 h-8 text-purple-600" />
-                </div>
-                <h4 className="font-semibold text-gray-900 mb-2">Flexible Schedule</h4>
-                <p className="text-gray-600 text-sm">Work when you want, choose your own hours</p>
+              <div className="bg-gray-50 rounded-2xl p-8">
+                <h3 className="text-xl font-bold text-gray-900 mb-4">Vehicle Requirements</h3>
+                <ul className="space-y-3">
+                  <li className="flex items-center space-x-3">
+                    <CheckCircle className="w-5 h-5 text-green-500 flex-shrink-0" />
+                    <span className="text-gray-700">Vehicle less than 10 years old</span>
+                  </li>
+                  <li className="flex items-center space-x-3">
+                    <CheckCircle className="w-5 h-5 text-green-500 flex-shrink-0" />
+                    <span className="text-gray-700">Valid MOT certificate</span>
+                  </li>
+                  <li className="flex items-center space-x-3">
+                    <CheckCircle className="w-5 h-5 text-green-500 flex-shrink-0" />
+                    <span className="text-gray-700">Comprehensive insurance</span>
+                  </li>
+                  <li className="flex items-center space-x-3">
+                    <CheckCircle className="w-5 h-5 text-green-500 flex-shrink-0" />
+                    <span className="text-gray-700">Clean and professional appearance</span>
+                  </li>
+                </ul>
               </div>
             </div>
           </div>
         </div>
-      </div>
+      </section>
     </div>
   );
 }
