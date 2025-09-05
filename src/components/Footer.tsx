@@ -1,10 +1,30 @@
 import React from 'react';
+import { useState } from 'react';
 import { Phone, Mail, MapPin, Clock, Facebook, Twitter, Instagram, Linkedin } from 'lucide-react';
+import { Button } from "@/components/ui/button";
+import { DriverRegistrationForm } from './DriverRegistrationForm';
 import logo from '../assets/logo.png';
 
 const Footer = () => {
+  const [isDriverFormOpen, setIsDriverFormOpen] = useState(false);
+
   return (
-    <footer className="bg-gray-900 text-white">
+    <>
+      <footer className="bg-gray-900 text-white">
+        {/* Join as Driver CTA */}
+        <div className="bg-yellow-400 py-6">
+          <div className="container mx-auto px-4 text-center">
+            <h3 className="text-2xl font-bold text-gray-900 mb-2">Want to Drive with Us?</h3>
+            <p className="text-gray-800 mb-4">Join our network of professional drivers and start earning today</p>
+            <Button 
+              onClick={() => setIsDriverFormOpen(true)}
+              className="bg-gray-900 hover:bg-gray-800 text-yellow-400 font-semibold px-8 py-3 rounded-full text-lg shadow-lg"
+            >
+              Join as a Driver
+            </Button>
+          </div>
+        </div>
+
       <div className="container mx-auto px-4 py-16">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {/* Company Info */}
@@ -115,6 +135,12 @@ const Footer = () => {
         </div>
       </div>
     </footer>
+      
+      <DriverRegistrationForm 
+        isOpen={isDriverFormOpen} 
+        onClose={() => setIsDriverFormOpen(false)} 
+      />
+    </>
   );
 };
 
