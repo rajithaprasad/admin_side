@@ -1,0 +1,111 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Definition of the design system. All colors, gradients, fonts, etc should be defined here.
+   All colors MUST be HSL.
+*/
+@layer base {
+  :root {
+    /* Light Mode - Matching your purple/orange theme */
+    --background: 270 50% 98%; /* Light purple/white background */
+    --foreground: 270 50% 10%; /* Dark purple text */
+    --card: 0 0% 100%; /* White cards */
+    --card-foreground: 270 50% 10%; /* Dark purple text on cards */
+    --popover: 0 0% 100%; /* White popovers */
+    --popover-foreground: 270 50% 10%; /* Dark purple popover text */
+    --primary: 30 100% 50%; /* Vibrant orange (buttons, accents) */
+    --primary-foreground: 0 0% 100%; /* White text on orange */
+    --primary-glow: 30 100% 60%; /* Lighter orange glow */
+    --secondary: 270 70% 50%; /* Purple (secondary buttons, accents) */
+    --secondary-foreground: 0 0% 100%; /* White text on purple */
+    --muted: 270 30% 95%; /* Light purple-gray (muted backgrounds) */
+    --muted-foreground: 270 30% 40%; /* Medium purple-gray text */
+    --accent: 270 60% 60%; /* Soft purple (borders, highlights) */
+    --accent-foreground: 0 0% 100%; /* White text on accent */
+    --destructive: 0 84% 60%; /* Red (error states) */
+    --destructive-foreground: 0 0% 100%; /* White text on red */
+    --border: 270 20% 80%; /* Light purple border */
+    --input: 270 20% 90%; /* Light purple input fields */
+    --ring: 30 100% 50%; /* Orange focus ring */
+    --success: 142 76% 36%; /* Green (success states) */
+    --warning: 43 96% 56%; /* Yellow (warning states) */
+    --info: 199 89% 48%; /* Blue (info states) */
+
+    /* Gradients - Matching your hero section */
+    --gradient-hero: linear-gradient(135deg, hsl(270 60% 30%), hsl(270 60% 40%));
+    --gradient-accent: linear-gradient(135deg, hsl(30 100% 50%), hsl(270 60% 50%));
+    --gradient-card: linear-gradient(145deg, hsl(0 0% 100% / 0.8), hsl(270 30% 95% / 0.9));
+
+    /* Shadows - Orange/purple glow */
+    --shadow-glow: 0 10px 40px hsl(270 60% 40% / 0.3);
+    --shadow-card: 0 4px 20px hsl(270 60% 30% / 0.1);
+    --shadow-lg: 0 10px 40px hsl(270 60% 30% / 0.15);
+
+    /* Sidebar */
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 270 50% 10%;
+    --sidebar-primary: 30 100% 50%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 270 30% 90%;
+    --sidebar-accent-foreground: 270 50% 10%;
+    --sidebar-border: 270 20% 80%;
+    --sidebar-ring: 30 100% 50%;
+
+    /* Radius */
+    --radius: 0.5rem;
+  }
+
+  .dark {
+    /* Dark Mode - Deeper purples and oranges */
+    --background: 270 60% 10%; /* Dark purple background */
+    --foreground: 0 0% 98%; /* Light text */
+    --card: 270 60% 15%; /* Dark purple cards */
+    --card-foreground: 0 0% 98%; /* Light text on cards */
+    --popover: 270 60% 15%; /* Dark purple popovers */
+    --popover-foreground: 0 0% 98%; /* Light popover text */
+    --primary: 30 100% 60%; /* Brighter orange in dark mode */
+    --primary-foreground: 270 60% 10%; /* Dark purple text on orange */
+    --secondary: 270 70% 60%; /* Lighter purple in dark mode */
+    --secondary-foreground: 0 0% 98%; /* Light text on purple */
+    --muted: 270 30% 20%; /* Dark muted backgrounds */
+    --muted-foreground: 270 20% 80%; /* Light muted text */
+    --accent: 270 60% 40%; /* Medium purple accent */
+    --accent-foreground: 0 0% 98%; /* Light text on accent */
+    --destructive: 0 63% 31%; /* Darker red */
+    --destructive-foreground: 0 0% 98%; /* Light text on red */
+    --border: 270 30% 25%; /* Dark purple border */
+    --input: 270 30% 25%; /* Dark purple input fields */
+    --ring: 30 100% 60%; /* Brighter orange ring */
+
+    /* Dark mode gradients */
+    --gradient-hero: linear-gradient(135deg, hsl(270 60% 20%), hsl(270 60% 30%));
+    --gradient-accent: linear-gradient(135deg, hsl(30 100% 60%), hsl(270 60% 40%));
+    --gradient-card: linear-gradient(145deg, hsl(270 60% 15% / 0.8), hsl(270 30% 20% / 0.9));
+
+    /* Dark mode shadows */
+    --shadow-glow: 0 10px 40px hsl(270 60% 40% / 0.4);
+    --shadow-card: 0 4px 20px hsl(270 60% 10% / 0.3);
+    --shadow-lg: 0 10px 40px hsl(270 60% 10% / 0.2);
+
+    /* Sidebar - Dark */
+    --sidebar-background: 270 60% 10%;
+    --sidebar-foreground: 0 0% 98%;
+    --sidebar-primary: 30 100% 60%;
+    --sidebar-primary-foreground: 270 60% 10%;
+    --sidebar-accent: 270 30% 20%;
+    --sidebar-accent-foreground: 0 0% 98%;
+    --sidebar-border: 270 30% 25%;
+    --sidebar-ring: 30 100% 60%;
+  }
+}
+
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}

@@ -1,0 +1,105 @@
+
+@keyframes slideLeftToRight {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+@keyframes slideRightToLeft {
+  0% {
+    transform: translateX(100%);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+
+footer svg {
+  position: absolute;
+  bottom: 100%;
+  left: 0;
+  width: 100%;
+  height: 100px;
+  transform: rotate(180deg);
+}
+
+/* Ensure the footer background is dark in dark mode */
+.dark footer {
+  background-color: hsl(222.2 84% 4.9%);
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.animate-fade-in {
+  animation: fadeIn 0.2s ease-out;
+}
+@keyframes float {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(-10px) rotate(5deg); }
+}
+@keyframes gradient-x {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+@keyframes pulse-slow {
+  0%, 100% { opacity: 0.1; transform: scale(1); }
+  50% { opacity: 0.2; transform: scale(1.05); }
+}
+@keyframes pulse-slower {
+  0%, 100% { opacity: 0.1; transform: scale(1); }
+  50% { opacity: 0.15; transform: scale(1.03); }
+}
+@keyframes move-orb-1 {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  33% { transform: translate(30px, -20px) scale(1.1); }
+  66% { transform: translate(-20px, 20px) scale(0.9); }
+}
+@keyframes move-orb-2 {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  33% { transform: translate(-30px, 20px) scale(1.1); }
+  66% { transform: translate(20px, -20px) scale(0.9); }
+}
+.animate-float {
+  animation: float 8s ease-in-out infinite;
+}
+.animate-gradient-x {
+  background-size: 200% 200%;
+  animation: gradient-x 15s ease infinite;
+}
+.animate-pulse-slow {
+  animation: pulse-slow 8s ease-in-out infinite;
+}
+.animate-pulse-slower {
+  animation: pulse-slower 12s ease-in-out infinite;
+}
+.animate-move-orb-1 {
+  animation: move-orb-1 20s ease-in-out infinite;
+}
+.animate-move-orb-2 {
+  animation: move-orb-2 25s ease-in-out infinite;
+}
+.animation-delay-1000 {
+  animation-delay: 1s;
+}
+.animation-delay-1500 {
+  animation-delay: 1.5s;
+}
+.animation-delay-2000 {
+  animation-delay: 2s;
+}
+.animation-delay-3000 {
+  animation-delay: 3s;
+}
+.bg-grid-pattern {
+  background-image:
+    linear-gradient(to right, gray 1px, transparent 1px),
+    linear-gradient(to bottom, gray 1px, transparent 1px);
+}
+/* Wave Animation */
+

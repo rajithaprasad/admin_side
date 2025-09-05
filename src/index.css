@@ -1,0 +1,110 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Definition of the design system. All colors, gradients, fonts, etc should be defined here.
+   All colors MUST be HSL.
+*/
+@layer base {
+  :root {
+    /* Light Mode - Matching your purple/orange theme */
+    --background: 300 20% 98%; /* Very light purple background */
+    --foreground: 300 98% 15%; /* Deep purple text */
+    --card: 0 0% 100%; /* White cards */
+    --card-foreground: 300 98% 15%; /* Deep purple on cards */
+    --popover: 0 0% 100%; /* White popovers */
+    --popover-foreground: 300 98% 15%; /* Deep purple popover text */
+    --primary: 28 96% 55%; /* Brand orange */
+    --primary-foreground: 0 0% 100%; /* White text on orange */
+    --primary-glow: 28 96% 65%; /* Lighter orange glow */
+    --secondary: 300 98% 25%; /* Rich purple secondary */
+    --secondary-foreground: 0 0% 100%; /* White text on purple */
+    --muted: 300 20% 95%; /* Muted lavender */
+    --muted-foreground: 300 20% 40%; /* Muted purple-gray */
+    --accent: 300 70% 40%; /* Accent purple */
+    --accent-foreground: 0 0% 100%; /* White on accent */
+    --destructive: 0 84% 60%; /* Red for errors */
+    --destructive-foreground: 0 0% 100%; /* White on red */
+    --border: 300 20% 80%; /* Light purple border */
+    --input: 300 20% 90%; /* Input background */
+    --ring: 28 96% 55%; /* Orange focus ring */
+    --success: 142 76% 36%; /* Green success */
+    --warning: 43 96% 56%; /* Yellow warning */
+    --info: 199 89% 48%; /* Blue info */
+
+    /* Gradients - Matching hero section */
+    --gradient-hero: linear-gradient(135deg, hsl(300 98% 15%), hsl(300 70% 25%));
+    --gradient-accent: linear-gradient(135deg, hsl(28 96% 55%), hsl(300 70% 40%));
+    --gradient-card: linear-gradient(145deg, hsl(0 0% 100% / 0.8), hsl(300 20% 95% / 0.9));
+
+    /* Shadows */
+    --shadow-glow: 0 10px 40px hsl(300 70% 25% / 0.3);
+    --shadow-card: 0 4px 20px hsl(300 98% 15% / 0.1);
+    --shadow-lg: 0 10px 40px hsl(300 98% 15% / 0.15);
+
+    /* Sidebar */
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 300 98% 15%;
+    --sidebar-primary: 28 96% 55%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 300 20% 90%;
+    --sidebar-accent-foreground: 300 98% 15%;
+    --sidebar-border: 300 20% 80%;
+    --sidebar-ring: 28 96% 55%;
+
+    /* Radius */
+    --radius: 0.5rem;
+  }
+
+  .dark {
+    /* Dark Mode */
+    --background: 300 98% 10%; /* Deep purple background */
+    --foreground: 0 0% 98%; /* Light text */
+    --card: 300 98% 15%; /* Purple cards */
+    --card-foreground: 0 0% 98%; /* White on cards */
+    --popover: 300 98% 15%;
+    --popover-foreground: 0 0% 98%;
+    --primary: 28 96% 60%; /* Brighter orange */
+    --primary-foreground: 300 98% 10%; /* Purple on orange */
+    --secondary: 300 70% 40%; /* Purple secondary */
+    --secondary-foreground: 0 0% 98%;
+    --muted: 300 20% 20%;
+    --muted-foreground: 300 20% 80%;
+    --accent: 300 70% 40%;
+    --accent-foreground: 0 0% 98%;
+    --destructive: 0 63% 31%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 300 20% 25%;
+    --input: 300 20% 25%;
+    --ring: 28 96% 60%;
+
+    /* Dark mode gradients */
+    --gradient-hero: linear-gradient(135deg, hsl(300 98% 10%), hsl(300 70% 20%));
+    --gradient-accent: linear-gradient(135deg, hsl(28 96% 60%), hsl(300 70% 30%));
+    --gradient-card: linear-gradient(145deg, hsl(300 98% 15% / 0.8), hsl(300 20% 20% / 0.9));
+
+    /* Dark mode shadows */
+    --shadow-glow: 0 10px 40px hsl(300 70% 30% / 0.4);
+    --shadow-card: 0 4px 20px hsl(300 98% 10% / 0.3);
+    --shadow-lg: 0 10px 40px hsl(300 98% 10% / 0.2);
+
+    /* Sidebar - Dark */
+    --sidebar-background: 300 98% 10%;
+    --sidebar-foreground: 0 0% 98%;
+    --sidebar-primary: 28 96% 60%;
+    --sidebar-primary-foreground: 300 98% 10%;
+    --sidebar-accent: 300 20% 20%;
+    --sidebar-accent-foreground: 0 0% 98%;
+    --sidebar-border: 300 20% 25%;
+    --sidebar-ring: 28 96% 60%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
