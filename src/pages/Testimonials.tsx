@@ -168,7 +168,6 @@ const Testimonials = () => {
                     <p className="text-gray-700 italic mb-6">"{testimonial.text}"</p>
 
                     <div className="flex items-center justify-between pt-4 border-t border-gray-100">
-                      <span className="text-sm font-medium text-[#9333EA]">
                       <span className="text-sm font-medium text-purple-600">
                         {testimonial.service}
                       </span>
