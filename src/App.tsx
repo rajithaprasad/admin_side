@@ -17,6 +17,7 @@ import AdminSettings from "./pages/AdminSettings";
 import AdminOrders from "./pages/AdminOrders";
 import DriverDashboard from "./pages/DriverDashboard";
 import NotFound from "./pages/NotFound";
+import DriverRegistration from "./pages/DriverRegistration";
 import { ProtectedRoute } from "./components/ProtectedRoute";
 import { DashboardLayout } from "./layouts/DashboardLayout";
 
@@ -40,6 +41,7 @@ const App = () => {
             {/* Auth Routes */}
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
+            <Route path="/driver-registration" element={<DriverRegistration />} />
             
             {/* Admin Routes */}
             <Route path="/admin" element={
