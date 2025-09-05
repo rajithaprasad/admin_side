@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -7,6 +8,8 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Upload, X, CheckCircle, Truck, FileText, Shield, User, Star, Clock, Package } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 import { useNavigate } from "react-router-dom";
+import Header from "../components/Header";
+import Footer from "../components/Footer";
 
 export default function DriverRegistration() {
   const [formData, setFormData] = useState({
@@ -185,7 +188,9 @@ export default function DriverRegistration() {
   ];
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen flex flex-col">
+      <Header />
+      <main className="flex-1 bg-gray-50">
       {/* Hero Section */}
       <section className="py-24 bg-gradient-to-br from-purple-600 via-purple-700 to-purple-800 text-white">
         <div className="container mx-auto px-4 text-center">
@@ -569,6 +574,8 @@ export default function DriverRegistration() {
           </div>
         </div>
       </section>
+      </main>
+      <Footer />
     </div>
   );
 }
