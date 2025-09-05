@@ -28,22 +28,22 @@ const CoverageSection = () => {
 
   const features = [
     { 
-      icon: <MapPin className="w-5 h-5 text-[#FF6B35]" />, 
+      icon: <MapPin className="w-5 h-5 text-purple-600" />, 
       title: "Door-to-door service", 
       description: "Available in all major UK cities" 
     },
     { 
-      icon: <Clock className="w-5 h-5 text-[#FF6B35]" />, 
+      icon: <Clock className="w-5 h-5 text-purple-600" />, 
       title: "Express delivery", 
       description: "Within London M25 area" 
     },
     { 
-      icon: <CheckCircle className="w-5 h-5 text-[#FF6B35]" />, 
+      icon: <CheckCircle className="w-5 h-5 text-purple-600" />, 
       title: "Nationwide coverage", 
       description: "With reliable partners across the UK" 
     },
     { 
-      icon: <Star className="w-5 h-5 text-[#FF6B35]" />, 
+      icon: <Star className="w-5 h-5 text-purple-600" />, 
       title: "Real-time tracking", 
       description: "For all your deliveries" 
     },
@@ -54,21 +54,15 @@ const CoverageSection = () => {
   );
 
   return (
-    <section id="coverage" className="py-20 bg-gradient-to-br from-[#1E124C] to-[#0F0825] text-white relative overflow-hidden">
-      {/* Background Elements */}
-      <div className="absolute inset-0">
-        <div className="absolute top-20 left-10 w-64 h-64 bg-[#FF6B35]/10 rounded-full blur-3xl"></div>
-        <div className="absolute bottom-20 right-10 w-80 h-80 bg-[#9333EA]/10 rounded-full blur-3xl"></div>
-        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-[#3D2B7A]/20 rounded-full blur-3xl"></div>
-      </div>
+    <section id="coverage" className="py-20 bg-gray-50">
 
       <div className="container mx-auto px-4 relative">
         {/* Header */}
         <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-white to-[#FF9B7B]">
+          <h2 className="text-4xl md:text-5xl font-bold mb-6 text-gray-900">
             UK-Wide Coverage
           </h2>
-          <p className="text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed">
+          <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
             We deliver to every corner of the UK, with same-day service in major cities
             and next-day delivery nationwide.
           </p>
@@ -76,16 +70,16 @@ const CoverageSection = () => {
 
         <div className="grid lg:grid-cols-2 gap-12 items-start">
           {/* Coverage Map Representation */}
-          <div className="bg-gradient-to-b from-[#2D1B69] to-[#1E124C] rounded-2xl p-8 border border-[#3D2B7A] shadow-2xl shadow-[#9333EA]/10">
-            <h3 className="text-2xl font-bold mb-6 text-center">Service Areas</h3>
+          <div className="bg-white rounded-2xl p-8 shadow-lg border-0">
+            <h3 className="text-2xl font-bold mb-6 text-center text-gray-900">Service Areas</h3>
             
             {/* Search Bar */}
             <div className="relative mb-6">
-              <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400" />
+              <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-500" />
               <input
                 type="text"
                 placeholder="Search your city..."
-                className="w-full pl-10 pr-4 py-3 bg-[#1E124C] border border-[#3D2B7A] rounded-lg focus:outline-none focus:ring-2 focus:ring-[#FF6B35]"
+                className="w-full pl-10 pr-4 py-3 bg-gray-50 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
               />
@@ -94,36 +88,36 @@ const CoverageSection = () => {
             {/* Cities Grid */}
             <div className="mb-6">
               <h4 className="font-semibold text-lg mb-4 flex items-center">
-                <Star className="w-5 h-5 text-[#FF6B35] mr-2" />
+                <Star className="w-5 h-5 text-purple-600 mr-2" />
                 Popular Cities
               </h4>
               <div className="grid grid-cols-1 gap-3 mb-6">
                 {popularCities.map((city, index) => (
                   <div
                     key={index}
-                    className="p-4 rounded-xl bg-gradient-to-r from-[#3D2B7A]/50 to-[#2D1B69]/50 border border-[#3D2B7A] hover:border-[#FF6B35]/30 transition-all duration-300 flex justify-between items-center"
+                    className="p-4 rounded-xl bg-gray-50 border border-gray-200 hover:border-purple-300 hover:shadow-sm transition-all duration-300 flex justify-between items-center"
                   >
                     <div className="flex items-center">
-                      <MapPin className="w-4 h-4 text-[#FF6B35] mr-3" />
-                      <span className="font-semibold">{city.name}</span>
+                      <MapPin className="w-4 h-4 text-purple-600 mr-3" />
+                      <span className="font-semibold text-gray-900">{city.name}</span>
                     </div>
-                    <span className="text-sm bg-[#FF6B35]/20 px-2 py-1 rounded-full">{city.deliveryTime}</span>
+                    <span className="text-sm bg-purple-100 text-purple-700 px-3 py-1 rounded-full font-medium">{city.deliveryTime}</span>
                   </div>
                 ))}
               </div>
 
-              <h4 className="font-semibold text-lg mb-4">Other Cities</h4>
+              <h4 className="font-semibold text-lg mb-4 text-gray-900">Other Cities</h4>
               <div className="grid grid-cols-1 gap-3">
                 {(searchQuery ? filteredCities : (isExpanded ? otherCities : otherCities.slice(0, 3))).map((city, index) => (
                   <div
                     key={index}
-                    className="p-4 rounded-xl bg-gradient-to-r from-[#3D2B7A]/30 to-[#2D1B69]/30 border border-[#3D2B7A] hover:border-[#9333EA]/30 transition-all duration-300 flex justify-between items-center"
+                    className="p-4 rounded-xl bg-white border border-gray-200 hover:border-purple-300 hover:shadow-sm transition-all duration-300 flex justify-between items-center"
                   >
                     <div className="flex items-center">
-                      <MapPin className="w-4 h-4 text-[#9333EA] mr-3" />
-                      <span className="font-medium">{city.name}</span>
+                      <MapPin className="w-4 h-4 text-purple-600 mr-3" />
+                      <span className="font-medium text-gray-900">{city.name}</span>
                     </div>
-                    <span className="text-sm bg-[#9333EA]/20 px-2 py-1 rounded-full">{city.deliveryTime}</span>
+                    <span className="text-sm bg-gray-100 text-gray-700 px-3 py-1 rounded-full font-medium">{city.deliveryTime}</span>
                   </div>
                 ))}
               </div>
@@ -132,7 +126,7 @@ const CoverageSection = () => {
             {!searchQuery && (
               <button 
                 onClick={() => setIsExpanded(!isExpanded)}
-                className="w-full py-3 bg-[#3D2B7A]/50 hover:bg-[#3D2B7A] border border-[#3D2B7A] rounded-lg flex items-center justify-center transition-colors"
+                className="w-full py-3 bg-gray-100 hover:bg-gray-200 border border-gray-200 rounded-xl flex items-center justify-center transition-colors text-gray-700"
               >
                 {isExpanded ? (
                   <>
@@ -151,44 +145,44 @@ const CoverageSection = () => {
 
           {/* Features List */}
           <div>
-            <h3 className="text-3xl font-bold mb-8">Comprehensive Delivery Network</h3>
+            <h3 className="text-3xl font-bold mb-8 text-gray-900">Comprehensive Delivery Network</h3>
             
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-10">
               {features.map((feature, index) => (
                 <div 
                   key={index} 
-                  className="bg-gradient-to-br from-[#2D1B69] to-[#1E124C] p-5 rounded-xl border border-[#3D2B7A] hover:border-[#FF6B35]/30 transition-all duration-300"
+                  className="bg-white p-6 rounded-xl shadow-sm hover:shadow-md transition-all duration-300 border border-gray-200"
                 >
                   <div className="flex items-center mb-3">
-                    <div className="p-2 bg-[#FF6B35]/10 rounded-lg mr-3">
+                    <div className="p-2 bg-purple-100 rounded-lg mr-3">
                       {feature.icon}
                     </div>
-                    <h4 className="font-semibold text-lg">{feature.title}</h4>
+                    <h4 className="font-semibold text-lg text-gray-900">{feature.title}</h4>
                   </div>
-                  <p className="text-gray-300 text-sm pl-11">{feature.description}</p>
+                  <p className="text-gray-600 text-sm pl-11">{feature.description}</p>
                 </div>
               ))}
             </div>
 
             {/* Stats */}
             <div className="grid grid-cols-2 gap-6 mb-10">
-              <div className="bg-gradient-to-br from-[#2D1B69] to-[#1E124C] p-5 rounded-xl border border-[#3D2B7A] text-center">
-                <div className="text-3xl font-bold text-[#FF6B35] mb-2">200+</div>
-                <div className="text-gray-300">Cities Covered</div>
+              <div className="bg-white p-6 rounded-xl shadow-sm text-center border border-gray-200">
+                <div className="text-3xl font-bold text-purple-600 mb-2">200+</div>
+                <div className="text-gray-600">Cities Covered</div>
               </div>
-              <div className="bg-gradient-to-br from-[#2D1B69] to-[#1E124C] p-5 rounded-xl border border-[#3D2B7A] text-center">
-                <div className="text-3xl font-bold text-[#FF6B35] mb-2">50+</div>
-                <div className="text-gray-300">Partner Depots</div>
+              <div className="bg-white p-6 rounded-xl shadow-sm text-center border border-gray-200">
+                <div className="text-3xl font-bold text-purple-600 mb-2">50+</div>
+                <div className="text-gray-600">Partner Depots</div>
               </div>
             </div>
 
             {/* CTA */}
             <div className="mt-8">
-              <button className="w-full bg-gradient-to-r from-[#FF6B35] to-[#FF8C42] hover:from-[#FF8C42] hover:to-[#FF6B35] text-white px-6 py-4 rounded-xl font-semibold transition-all duration-300 flex items-center justify-center shadow-lg shadow-[#FF6B35]/20 hover:shadow-[#FF6B35]/40">
+              <button className="w-full bg-purple-600 hover:bg-purple-700 text-white px-6 py-4 rounded-xl font-semibold transition-all duration-300 flex items-center justify-center shadow-lg">
                 Check Your Area
                 <MapPin className="w-5 h-5 ml-2" />
               </button>
-              <p className="text-center text-gray-400 mt-4 text-sm">
+              <p className="text-center text-gray-600 mt-4 text-sm">
                 Enter your postcode to check delivery options
               </p>
             </div>

@@ -4,7 +4,7 @@ import logo from '../assets/logo.png';
 
 const Footer = () => {
   return (
-    <footer className="bg-[#1E124C] text-white">
+    <footer className="bg-gray-900 text-white">
       <div className="container mx-auto px-4 py-16">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {/* Company Info */}
@@ -23,16 +23,16 @@ const Footer = () => {
             </p>
             {/* Social Links */}
             <div className="flex space-x-4">
-              <a href="#" className="bg-[#2D1B69] hover:bg-[#FF6B35] p-3 rounded-lg transition-colors">
+              <a href="#" className="bg-gray-800 hover:bg-purple-600 p-3 rounded-lg transition-colors">
                 <Facebook className="w-5 h-5" />
               </a>
-              <a href="#" className="bg-[#2D1B69] hover:bg-[#FF6B35] p-3 rounded-lg transition-colors">
+              <a href="#" className="bg-gray-800 hover:bg-purple-600 p-3 rounded-lg transition-colors">
                 <Twitter className="w-5 h-5" />
               </a>
-              <a href="#" className="bg-[#2D1B69] hover:bg-[#FF6B35] p-3 rounded-lg transition-colors">
+              <a href="#" className="bg-gray-800 hover:bg-purple-600 p-3 rounded-lg transition-colors">
                 <Instagram className="w-5 h-5" />
               </a>
-              <a href="#" className="bg-[#2D1B69] hover:bg-[#FF6B35] p-3 rounded-lg transition-colors">
+              <a href="#" className="bg-gray-800 hover:bg-purple-600 p-3 rounded-lg transition-colors">
                 <Linkedin className="w-5 h-5" />
               </a>
             </div>
@@ -42,12 +42,12 @@ const Footer = () => {
           <div>
             <h3 className="text-lg font-semibold mb-6">Services</h3>
             <ul className="space-y-3 text-gray-300">
-              <li><a href="#" className="hover:text-[#FF6B35] transition-colors">Home Deliveries</a></li>
-              <li><a href="#" className="hover:text-[#FF6B35] transition-colors">Business Logistics</a></li>
-              <li><a href="#" className="hover:text-[#FF6B35] transition-colors">Furniture Delivery</a></li>
-              <li><a href="#" className="hover:text-[#FF6B35] transition-colors">Same-Day Service</a></li>
-              <li><a href="#" className="hover:text-[#FF6B35] transition-colors">White Glove Service</a></li>
-              <li><a href="#" className="hover:text-[#FF6B35] transition-colors">Assembly Service</a></li>
+              <li><a href="#" className="hover:text-purple-400 transition-colors">Home Deliveries</a></li>
+              <li><a href="#" className="hover:text-purple-400 transition-colors">Business Logistics</a></li>
+              <li><a href="#" className="hover:text-purple-400 transition-colors">Furniture Delivery</a></li>
+              <li><a href="#" className="hover:text-purple-400 transition-colors">Same-Day Service</a></li>
+              <li><a href="#" className="hover:text-purple-400 transition-colors">White Glove Service</a></li>
+              <li><a href="#" className="hover:text-purple-400 transition-colors">Assembly Service</a></li>
             </ul>
           </div>
 
@@ -55,12 +55,12 @@ const Footer = () => {
           <div>
             <h3 className="text-lg font-semibold mb-6">Company</h3>
             <ul className="space-y-3 text-gray-300">
-              <li><a href="#" className="hover:text-[#FF6B35] transition-colors">About Us</a></li>
-              <li><a href="#" className="hover:text-[#FF6B35] transition-colors">Careers</a></li>
-              <li><a href="#" className="hover:text-[#FF6B35] transition-colors">Driver Application</a></li>
-              <li><a href="#" className="hover:text-[#FF6B35] transition-colors">Insurance</a></li>
-              <li><a href="#" className="hover:text-[#FF6B35] transition-colors">Terms of Service</a></li>
-              <li><a href="#" className="hover:text-[#FF6B35] transition-colors">Privacy Policy</a></li>
+              <li><a href="#" className="hover:text-purple-400 transition-colors">About Us</a></li>
+              <li><a href="#" className="hover:text-purple-400 transition-colors">Careers</a></li>
+              <li><a href="#" className="hover:text-purple-400 transition-colors">Driver Application</a></li>
+              <li><a href="#" className="hover:text-purple-400 transition-colors">Insurance</a></li>
+              <li><a href="#" className="hover:text-purple-400 transition-colors">Terms of Service</a></li>
+              <li><a href="#" className="hover:text-purple-400 transition-colors">Privacy Policy</a></li>
             </ul>
           </div>
 
@@ -69,28 +69,28 @@ const Footer = () => {
             <h3 className="text-lg font-semibold mb-6">Contact</h3>
             <div className="space-y-4 text-gray-300">
               <div className="flex items-start">
-                <Phone className="w-5 h-5 mr-3 mt-1 text-[#FF6B35]" />
+                <Phone className="w-5 h-5 mr-3 mt-1 text-purple-400" />
                 <div>
                   <div className="font-medium">24/7 Booking</div>
                   <div>0800 123 4567</div>
                 </div>
               </div>
               <div className="flex items-start">
-                <Mail className="w-5 h-5 mr-3 mt-1 text-[#FF6B35]" />
+                <Mail className="w-5 h-5 mr-3 mt-1 text-purple-400" />
                 <div>
                   <div className="font-medium">Email Support</div>
                   <div>hello@moveexpress.co.uk</div>
                 </div>
               </div>
               <div className="flex items-start">
-                <MapPin className="w-5 h-5 mr-3 mt-1 text-[#FF6B35]" />
+                <MapPin className="w-5 h-5 mr-3 mt-1 text-purple-400" />
                 <div>
                   <div className="font-medium">Head Office</div>
                   <div>123 Delivery Street<br />London, SW1A 1AA</div>
                 </div>
               </div>
               <div className="flex items-start">
-                <Clock className="w-5 h-5 mr-3 mt-1 text-[#FF6B35]" />
+                <Clock className="w-5 h-5 mr-3 mt-1 text-purple-400" />
                 <div>
                   <div className="font-medium">Operating Hours</div>
                   <div>24/7 Booking Available<br />Delivery: 6AM - 10PM</div>
@@ -101,7 +101,7 @@ const Footer = () => {
         </div>
 
         {/* Bottom Section */}
-        <div className="border-t border-[#2D1B69] mt-12 pt-8">
+        <div className="border-t border-gray-800 mt-12 pt-8">
           <div className="flex flex-col md:flex-row justify-between items-center">
             <div className="text-gray-400 text-sm mb-4 md:mb-0">
               © 2025 MOVEXPRESS Ltd. All rights reserved. Licensed delivery service provider.

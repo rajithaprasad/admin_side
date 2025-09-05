@@ -90,7 +90,7 @@ const Testimonials = () => {
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Hero Section */}
-      <section className="py-24 px-4 text-center bg-gradient-to-b from-[#2D1B69] to-[#3B2F8A] text-white">
+      <section className="py-24 px-4 text-center bg-gradient-to-br from-purple-600 via-purple-700 to-purple-800 text-white">
         <div className="container mx-auto">
           <h1 className="text-4xl md:text-5xl font-bold mb-6 drop-shadow-lg">
             Trusted by Thousands of Happy Customers
@@ -113,12 +113,12 @@ const Testimonials = () => {
             {stats.map((stat, index) => (
               <div
                 key={index}
-                className="p-6 rounded-xl bg-white shadow-sm hover:shadow-md transition-all duration-300 border border-gray-100"
+                className="p-6 rounded-2xl bg-white shadow-sm hover:shadow-lg transition-all duration-300 border-0"
               >
-                <div className="w-12 h-12 mb-4 rounded-full bg-[#2D1B69]/10 flex items-center justify-center mx-auto">
-                  <stat.icon className="w-6 h-6 text-[#9333EA]" />
+                <div className="w-12 h-12 mb-4 rounded-xl bg-purple-100 flex items-center justify-center mx-auto">
+                  <stat.icon className="w-6 h-6 text-purple-600" />
                 </div>
-                <div className="text-3xl font-bold text-[#2D1B69] mb-2">{stat.number}</div>
+                <div className="text-3xl font-bold text-gray-900 mb-2">{stat.number}</div>
                 <p className="text-gray-600 text-sm">{stat.label}</p>
               </div>
             ))}
@@ -129,7 +129,7 @@ const Testimonials = () => {
       {/* Testimonials Grid */}
       <section className="py-20 bg-gray-50">
         <div className="container mx-auto px-4">
-          <h2 className="text-3xl font-bold text-[#2D1B69] text-center mb-12">
+          <h2 className="text-4xl font-bold text-gray-900 text-center mb-12">
             Real Stories from Real Customers
           </h2>
 
@@ -137,7 +137,7 @@ const Testimonials = () => {
             {testimonials.map((testimonial, index) => (
               <Card
                 key={index}
-                className="overflow-hidden transition-all duration-300 hover:shadow-lg hover:-translate-y-2"
+                className="overflow-hidden transition-all duration-300 hover:shadow-lg hover:-translate-y-2 border-0 shadow-sm"
               >
                 <CardContent className="p-0">
                   <div className="p-6">
@@ -145,10 +145,10 @@ const Testimonials = () => {
                       <img
                         src={testimonial.avatar}
                         alt={testimonial.name}
-                        className="w-12 h-12 rounded-full mr-4 object-cover"
+                        className="w-12 h-12 rounded-xl mr-4 object-cover"
                       />
                       <div>
-                        <h3 className="font-semibold text-[#2D1B69]">{testimonial.name}</h3>
+                        <h3 className="font-semibold text-gray-900">{testimonial.name}</h3>
                         <div className="flex items-center text-sm text-gray-500">
                           <MapPin className="w-4 h-4 mr-1" />
                           {testimonial.location}
@@ -169,6 +169,7 @@ const Testimonials = () => {
 
                     <div className="flex items-center justify-between pt-4 border-t border-gray-100">
                       <span className="text-sm font-medium text-[#9333EA]">
+                      <span className="text-sm font-medium text-purple-600">
                         {testimonial.service}
                       </span>
                       <Quote className="w-5 h-5 text-gray-300" />
@@ -185,8 +186,8 @@ const Testimonials = () => {
       <section className="py-20 bg-white">
         <div className="container mx-auto px-4 max-w-4xl">
           <div className="flex justify-between items-center mb-12">
-            <h2 className="text-3xl font-bold text-[#2D1B69]">Frequently Asked Questions</h2>
-            <button className="bg-[#FF6B35] hover:bg-[#E55A1B] text-white px-6 py-3 rounded-full font-semibold transition-all duration-300">
+            <h2 className="text-3xl font-bold text-gray-900">Frequently Asked Questions</h2>
+            <button className="bg-purple-600 hover:bg-purple-700 text-white px-6 py-3 rounded-full font-semibold transition-all duration-300">
               Get Quote
             </button>
           </div>
@@ -195,21 +196,21 @@ const Testimonials = () => {
             {faqs.map((faq, index) => (
               <div
                 key={index}
-                className="border border-gray-200 rounded-lg overflow-hidden"
+                className="border border-gray-200 rounded-xl overflow-hidden"
               >
                 <button
-                  className="w-full p-6 text-left flex justify-between items-center bg-gray-50 hover:bg-gray-100 transition-all duration-300"
+                  className="w-full p-6 text-left flex justify-between items-center bg-white hover:bg-gray-50 transition-all duration-300"
                   onClick={() => toggleFaq(index)}
                 >
-                  <span className="font-semibold text-[#2D1B69]">{faq.question}</span>
+                  <span className="font-semibold text-gray-900">{faq.question}</span>
                   {openFaq === index ? (
-                    <ChevronUp className="w-5 h-5 text-[#9333EA]" />
+                    <ChevronUp className="w-5 h-5 text-purple-600" />
                   ) : (
-                    <ChevronDown className="w-5 h-5 text-[#9333EA]" />
+                    <ChevronDown className="w-5 h-5 text-purple-600" />
                   )}
                 </button>
                 {openFaq === index && (
-                  <div className="p-6 bg-white">
+                  <div className="p-6 bg-gray-50">
                     <p className="text-gray-700">{faq.answer}</p>
                   </div>
                 )}
@@ -222,36 +223,36 @@ const Testimonials = () => {
       {/* Trust Section */}
       <section className="py-20 bg-gray-50">
         <div className="container mx-auto px-4">
-          <h2 className="text-3xl font-bold text-[#2D1B69] text-center mb-12">
+          <h2 className="text-3xl font-bold text-gray-900 text-center mb-12">
             Why Customers Choose MoveXpress
           </h2>
 
           <div className="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-10">
-            <div className="text-center p-6 rounded-xl bg-white shadow-sm">
-              <div className="w-16 h-16 mb-4 rounded-full bg-gradient-to-r from-[#2D1B69] to-[#9333EA] flex items-center justify-center mx-auto">
+            <div className="text-center p-6 rounded-2xl bg-white shadow-sm">
+              <div className="w-16 h-16 mb-4 rounded-2xl bg-purple-600 flex items-center justify-center mx-auto">
                 <ShieldCheck className="w-8 h-8 text-white" />
               </div>
-              <h3 className="text-xl font-semibold text-[#2D1B69] mb-3">Verified Reviews</h3>
+              <h3 className="text-xl font-semibold text-gray-900 mb-3">Verified Reviews</h3>
               <p className="text-gray-600">
                 All our reviews come from real customers who have used our services
               </p>
             </div>
 
-            <div className="text-center p-6 rounded-xl bg-white shadow-sm">
-              <div className="w-16 h-16 mb-4 rounded-full bg-gradient-to-r from-[#2D1B69] to-[#9333EA] flex items-center justify-center mx-auto">
+            <div className="text-center p-6 rounded-2xl bg-white shadow-sm">
+              <div className="w-16 h-16 mb-4 rounded-2xl bg-purple-600 flex items-center justify-center mx-auto">
                 <Truck className="w-8 h-8 text-white" />
               </div>
-              <h3 className="text-xl font-semibold text-[#2D1B69] mb-3">Professional Service</h3>
+              <h3 className="text-xl font-semibold text-gray-900 mb-3">Professional Service</h3>
               <p className="text-gray-600">
                 Our trained professionals handle your belongings with care
               </p>
             </div>
 
-            <div className="text-center p-6 rounded-xl bg-white shadow-sm">
-              <div className="w-16 h-16 mb-4 rounded-full bg-gradient-to-r from-[#2D1B69] to-[#9333EA] flex items-center justify-center mx-auto">
+            <div className="text-center p-6 rounded-2xl bg-white shadow-sm">
+              <div className="w-16 h-16 mb-4 rounded-2xl bg-purple-600 flex items-center justify-center mx-auto">
                 <Clock className="w-8 h-8 text-white" />
               </div>
-              <h3 className="text-xl font-semibold text-[#2D1B69] mb-3">On-Time Guarantee</h3>
+              <h3 className="text-xl font-semibold text-gray-900 mb-3">On-Time Guarantee</h3>
               <p className="text-gray-600">
                 We pride ourselves on our 99% on-time delivery rate
               </p>
@@ -261,7 +262,7 @@ const Testimonials = () => {
       </section>
 
       {/* CTA Section */}
-      <section className="py-24 bg-gradient-to-r from-[#2D1B69] to-[#9333EA] text-white text-center">
+      <section className="py-24 bg-gradient-to-r from-purple-600 to-purple-700 text-white text-center">
         <div className="container mx-auto px-4">
           <h2 className="text-3xl font-bold mb-6">Ready to Experience the Difference?</h2>
           <p className="text-xl max-w-2xl mx-auto mb-10 opacity-90">
@@ -269,10 +270,10 @@ const Testimonials = () => {
           </p>
 
           <div className="flex flex-wrap justify-center gap-4">
-            <button className="bg-[#FF6B35] hover:bg-[#E55A1B] text-white px-8 py-4 rounded-full font-semibold text-lg transition-all duration-300 transform hover:scale-105 shadow-lg">
+            <button className="bg-yellow-400 hover:bg-yellow-500 text-purple-900 px-8 py-4 rounded-full font-semibold text-lg transition-all duration-300 transform hover:scale-105 shadow-lg">
               Get Your Free Quote
             </button>
-            <button className="border-2 border-white text-white hover:bg-white hover:text-[#2D1B69] px-8 py-4 rounded-full font-semibold text-lg transition-all duration-300 transform hover:scale-105">
+            <button className="border-2 border-white text-white hover:bg-white hover:text-purple-900 px-8 py-4 rounded-full font-semibold text-lg transition-all duration-300 transform hover:scale-105">
               Read More Reviews
             </button>
           </div>

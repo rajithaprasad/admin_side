@@ -44,7 +44,7 @@ const ServicesSection = () => {
   return (
     <>
       {/* Hero Section with updated gradient */}
-      <section className="py-20 bg-gradient-to-b from-[#2D1B69] to-[#3B2F8A] text-white">
+      <section className="py-20 bg-gradient-to-br from-purple-600 via-purple-700 to-purple-800 text-white">
         <div className="container mx-auto px-4 text-center">
           <h1 className="text-4xl md:text-5xl font-bold mb-6">
             Your Trusted Moving Partner
@@ -52,7 +52,7 @@ const ServicesSection = () => {
           <p className="text-xl mb-8 max-w-3xl mx-auto">
             We provide reliable and professional moving services tailored to your needs. Whether it's a home, office, or specialty item, we've got you covered.
           </p>
-          <button className="bg-[#FF6B35] hover:bg-[#E55A1B] text-white font-semibold py-3 px-6 rounded-full shadow-lg transition-colors duration-300 transform hover:scale-105">
+          <button className="bg-yellow-400 hover:bg-yellow-500 text-purple-900 font-semibold py-3 px-8 rounded-full shadow-lg transition-colors duration-300 transform hover:scale-105">
             Get a Free Quote
           </button>
         </div>
@@ -63,8 +63,8 @@ const ServicesSection = () => {
         <div className="container mx-auto px-4">
           {/* Section Header */}
           <div className="mb-12">
-            <h2 className="text-3xl font-bold text-[#2D1B69] mb-4">Our Services</h2>
-            <div className="w-12 h-1 bg-[#9333EA] mb-6"></div>
+            <h2 className="text-4xl font-bold text-gray-900 mb-4">Our Services</h2>
+            <div className="w-12 h-1 bg-purple-600 mb-6"></div>
           </div>
 
           {/* Services Grid */}
@@ -72,22 +72,21 @@ const ServicesSection = () => {
             {services.map((service, index) => (
               <div
                 key={index}
-                className="bg-white rounded-lg shadow-md overflow-hidden border border-gray-200 hover:shadow-lg transition-shadow duration-300"
+                className="bg-white rounded-2xl shadow-sm overflow-hidden border-0 hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1"
               >
                 <div className="p-6">
                   <div className="relative mb-4">
                     <img
                       src={service.imageUrl}
                       alt={service.title}
-                      className="w-full h-48 object-cover rounded-lg"
+                      className="w-full h-48 object-cover rounded-xl"
                     />
                   </div>
-                  <div className="relative pl-4">
-                    <div className="absolute -left-4 top-0 h-full w-1 bg-[#9333EA]"></div>
-                    <h3 className="text-xl font-bold text-[#2D1B69] mb-3">
+                  <div>
+                    <h3 className="text-xl font-bold text-gray-900 mb-3">
                       {service.title}
                     </h3>
-                    <p className="text-gray-600 text-sm">
+                    <p className="text-gray-600 leading-relaxed">
                       {service.description}
                     </p>
                   </div>
@@ -98,7 +97,7 @@ const ServicesSection = () => {
 
           {/* Get Quote Button (fixed position) */}
           <div className="fixed bottom-6 right-6 z-50">
-            <button className="bg-[#FF6B35] hover:bg-[#E55A1B] text-white font-semibold py-3 px-6 rounded-full shadow-lg transition-colors duration-300 transform hover:scale-105">
+            <button className="bg-purple-600 hover:bg-purple-700 text-white font-semibold py-3 px-6 rounded-full shadow-lg transition-colors duration-300 transform hover:scale-105">
               Get Quote
             </button>
           </div>

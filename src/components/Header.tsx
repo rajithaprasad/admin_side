@@ -41,11 +41,10 @@ const Header = () => {
             <img
               src={logo}
               alt="MoveExpress Logo"
-              className="w-8 h-8 md:w-10 md:h-10 transition-transform duration-300 group-hover:scale-105"
+              className="w-8 h-8 md:w-10 md:h-10 transition-transform duration-300 group-hover:scale-105 rounded-lg"
             />
             <span
-              className="text-xl md:text-3xl font-bold bg-gradient-hero bg-clip-text text-transparent"
-              style={{ fontFamily: "'Caveat', cursive" }}
+              className="text-xl md:text-2xl font-bold text-purple-600"
             >
               MOVEXPRESS
             </span>
